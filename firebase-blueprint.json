@@ -1,0 +1,128 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile metrics and fitness preferences",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "age": { "type": "number" },
+        "gender": { "type": "string" },
+        "height": { "type": "number" },
+        "weight": { "type": "number" },
+        "activityLevel": { "type": "string" },
+        "goal": { "type": "string" },
+        "bmi": { "type": "number" },
+        "bmr": { "type": "number" },
+        "tdee": { "type": "number" },
+        "dailyCalories": { "type": "number" }
+      }
+    },
+    "WorkoutSession": {
+      "title": "WorkoutSession",
+      "description": "Completed workout session details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "workoutDurationSeconds": { "type": "number" },
+        "totalSets": { "type": "number" },
+        "totalReps": { "type": "number" },
+        "totalPlankSeconds": { "type": "number" },
+        "estimatedCaloriesBurned": { "type": "number" },
+        "savedAt": { "type": "string" }
+      },
+      "required": ["id", "date"]
+    },
+    "FoodLog": {
+      "title": "FoodLog",
+      "description": "Food log entries for calories and macronutrients",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "mealName": { "type": "string" },
+        "foodName": { "type": "string" },
+        "portion": { "type": "string" },
+        "calories": { "type": "number" },
+        "protein": { "type": "number" },
+        "carbs": { "type": "number" },
+        "fat": { "type": "number" }
+      },
+      "required": ["id", "date", "foodName"]
+    },
+    "WaterLog": {
+      "title": "WaterLog",
+      "description": "Daily water intake entry",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string" },
+        "amountMl": { "type": "number" }
+      },
+      "required": ["date", "amountMl"]
+    },
+    "SleepLog": {
+      "title": "SleepLog",
+      "description": "Daily sleep log entry",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string" },
+        "durationHours": { "type": "number" },
+        "quality": { "type": "number" }
+      },
+      "required": ["date", "durationHours"]
+    },
+    "WeightLog": {
+      "title": "WeightLog",
+      "description": "Daily body weight entry",
+      "type": "object",
+      "properties": {
+        "date": { "type": "string" },
+        "weightKg": { "type": "number" }
+      },
+      "required": ["date", "weightKg"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "AI Coach message history item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "role": { "type": "string" },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "role", "content"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile document"
+    },
+    "/users/{userId}/workoutSessions/{sessionId}": {
+      "schema": "WorkoutSession",
+      "description": "Workout sessions for the user"
+    },
+    "/users/{userId}/foodLogs/{logId}": {
+      "schema": "FoodLog",
+      "description": "Food log entries"
+    },
+    "/users/{userId}/waterLogs/{date}": {
+      "schema": "WaterLog",
+      "description": "Water tracking entries"
+    },
+    "/users/{userId}/sleepLogs/{date}": {
+      "schema": "SleepLog",
+      "description": "Sleep tracking entries"
+    },
+    "/users/{userId}/weightLogs/{date}": {
+      "schema": "WeightLog",
+      "description": "Weight tracking entries"
+    },
+    "/users/{userId}/chatHistory/{messageId}": {
+      "schema": "ChatMessage",
+      "description": "AI Coach chat history"
+    }
+  }
+}

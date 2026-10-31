@@ -1,0 +1,6 @@
+{
+  "name": "FitGenie AI",
+  "description": "An adaptive, intelligent workout, nutrition, and health planning platform featuring computer vision posture analysis, exercise form correction, meal scanning, and personalized AI coaching.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
